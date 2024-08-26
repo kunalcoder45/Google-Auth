@@ -1,5 +1,5 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.13.0/firebase-app.js";
-import { getAuth, GoogleAuthProvider, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.13.0/firebase-auth.js";
+import { getAuth, GoogleAuthProvider, onAuthStateChanged , signOut } from "https://www.gstatic.com/firebasejs/10.13.0/firebase-auth.js";
 
 const firebaseConfig = {
   apiKey: "AIzaSyCLRgwJCXDz9-NtntVCJDKB5tEPO5WwzAk",
@@ -45,3 +45,15 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 });
+
+// log out
+const logOut = document.getElementById("logout-btn");
+
+logOut.addEventListener("click", function() {
+signOut(auth).then(() => {
+  // Sign-out successful.
+}).catch((error) => {
+  // An error happened.
+});
+});
+
