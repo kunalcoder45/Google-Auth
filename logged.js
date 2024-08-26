@@ -13,6 +13,10 @@ const firebaseConfig = {
 
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
+// auth.languageCode = "en"
+// const provider = new GoogleAuthProvider();
+
+const user = auth.currentUser;
 
 function updateUserProfile(user) {
   const userName = user.displayName || "No name provided";
@@ -29,7 +33,10 @@ onAuthStateChanged(auth, (user) => {
   if (user) {
     // If user is signed in, update profile UI
     updateUserProfile(user);
-    console.log("User ID:", user.uid);
+    //console.log("User ID:", user.uid);
+    const uid = user.uid;
+    return uid;
+    
   } else {
     // If no user is signed in, redirect to login page
     alert("Please create an account & log in.");
